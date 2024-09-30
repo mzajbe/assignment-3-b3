@@ -13,8 +13,18 @@ import { User } from "../modules/user/user.model";
 
 const auth = (...requiredRoles: TUserRole[]) => {
   return catchAsync(async (req: Request, res: Response, next: NextFunction) => {
-    const token = req.headers.authorization;
 
+    const authHeader = req.headers.authorization;
+
+     // Check if the token is missing
+     if (!authHeader || !authHeader.startsWith("Bearer ")) {
+      throw new AppError(httpStatus.UNAUTHORIZED, "You are not authorized");
+    }
+
+
+    const token = authHeader.split(" ")[1];
+
+    //check if the token is missing
     if (!token) {
       throw new AppError(httpStatus.UNAUTHORIZED, "You are not authorized");
     }
@@ -35,7 +45,9 @@ const auth = (...requiredRoles: TUserRole[]) => {
 
         const role = (decoded as JwtPayload).role;
 
-        if (requiredRoles.length && requiredRoles.includes(role)) {
+        
+
+        if (requiredRoles.length && !requiredRoles.includes(role)) {
           throw new AppError(httpStatus.UNAUTHORIZED, "You are not authorized");
         }
 
@@ -47,6 +59,7 @@ const auth = (...requiredRoles: TUserRole[]) => {
         if (!user) {
           throw new AppError(httpStatus.UNAUTHORIZED, "User not found");
         }
+        
 
         req.user = user;
         next();

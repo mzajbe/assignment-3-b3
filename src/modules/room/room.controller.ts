@@ -7,18 +7,7 @@ import httpStatus from 'http-status-codes';
 const createRoom = catchAsync(async (req,res)=>{
     const result = await RoomService.createRoomIntoDB(req.body);
     
-    // const authHeader = req.headers.authorization;
-
-    // if(!authHeader || !authHeader.startsWith('Bearer ')){
-    //   return res.status(httpStatus.UNAUTHORIZED).send({
-    //     success:false,
-    //     message:"Unauthorized: Bearer token missing.",
-    //   });
-    // }
-
-    // const token = authHeader.split(' ')[1];
     
-
     sendResponse(res, {
         statusCode: httpStatus.OK,
         success: true,

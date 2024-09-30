@@ -41,7 +41,7 @@ export const createSlotController = catchAsync(async (req, res) => {
     }
 
     try {
-        const slots = await SlotService.createSlots(room, date, startTime, endTime); // Pass room name
+        const slots = await SlotService.createSlots(room, date, startTime, endTime);
         res.status(200).json({
             success: true,
             statusCode: 200,

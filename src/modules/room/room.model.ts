@@ -31,6 +31,9 @@ const roomSchema = new Schema<TRoom>(
           type: [String],
           default: [],
         },
+        isDeleted:{
+          type:Boolean
+        }
       },
       {
         timestamps: true,

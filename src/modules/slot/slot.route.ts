@@ -5,10 +5,14 @@ import {
   getAvailableSlots,
   updateSlotController,
 } from "./slot.controller";
+import auth from "../../middlewares/auth";
+import { USER_ROLE } from "../user/user.constant";
 
 const router = express.Router();
 
-router.post("/create", createSlotController);
+router.post("/",
+  auth(USER_ROLE.admin),
+   createSlotController);
 router.get("/availability", getAvailableSlots);
 
 router.put("/:id", updateSlotController);

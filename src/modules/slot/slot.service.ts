@@ -50,19 +50,19 @@ const convertMinutesToTime = (minutes: number): string => {
 // };
 
 
-const createSlots = async (roomName: string, date: string, startTime: string, endTime: string, duration: number = 60) => {
-    // Find room by name
-    const room = await Room.findOne({ name: roomName });
+const createSlots = async (roomId: string, date: string, startTime: string, endTime: string, duration: number = 60) => {
+    
+    const room = await Room.findById(roomId);
     
     if (!room) {
-        throw new Error("Room not found");
+        throw new Error("Room not found for creating slot");
     }
 
-    // Convert start and end time to minutes
+    
     const startMinutes = convertTimeToMinutes(startTime);
     const endMinutes = convertTimeToMinutes(endTime);
 
-    // Calculate total duration in minutes and number of slots
+   
     const totalDuration = endMinutes - startMinutes;
     const numSlots = totalDuration / duration;
 
