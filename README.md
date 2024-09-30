@@ -50,3 +50,18 @@ Make sure you have the following installed:
    ```bash
    git clone https://github.com/your-username/meeting-room-booking-system.git
    cd meeting-room-booking-system
+
+   ```
+
+2. Install backend dependencies:
+   cd backend
+   npm install
+
+3. Install frontend dependencies:
+cd frontend
+npm install
+4. Set up environment variables:
+PORT=5000
+MONGO_URI=your_mongo_database_uri
+JWT_ACCESS_SECRET=your_jwt_access_secret
+JWT_REFRESH_SECRET=your_jwt_refresh_secret
