@@ -2,16 +2,7 @@
 
 A web-based application that allows users to book meeting rooms seamlessly. This system includes role-based access for admins and users, allowing administrators to manage rooms, slots, and bookings.
 
-## Table of Contents
 
-- [Features](#features)
-- [Technologies Used](#technologies-used)
-- [Installation](#installation)
-- [Running the Project](#running-the-project)
-- [API Endpoints](#api-endpoints)
-- [Folder Structure](#folder-structure)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Features
 
